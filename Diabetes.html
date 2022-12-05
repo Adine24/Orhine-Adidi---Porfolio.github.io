@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Diabetes Outcome-Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Orhine Adidi-Portfolio</a></h1>
+					<!--	<nav>
+							<a href="#menu">Menu</a>
+						</nav> -->
+					</header>
+
+				<!-- Menu 
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="generic.html">Generic</a></li>
+								<li><a href="elements.html">Elements</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div> -->
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Diabetes Outcome Analysis</h2>
+								<p>This Project tackles the positive or negative outcome of diabetes with regards to the different factors. I was able to analyze this data with the use of MySQL and Tableau.</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">The Process</h3>
+									<p> <span class="image left"><img src="images/diabetes.jpg" alt="" /></span>This turned out to be a simple project due to the dataset being easy to use. I would have done this in excel but I decided to use MySQL to brush up on my skills there. I got this dataset from kaggle.com which has a bunch more.
+										I started off by importing the table which came as an excel csv file from kaggle, into MySQL, then I checked that the datatypes were according to what I wanted. The dataset had a total of 768 rows by 10 columns.</p>
+
+									<br>
+									<br>
+						
+									<h4 class="major">MySQL</h4>
+									<p> The dataset had NO NUll values or Blank cells so there was little to no cleaning of the data.
+										The outcome for diabetes came in integer datatype as 0s and 1s for output,
+										so I created a new column called diabetes_outcome with varchar datatype and equated it to
+										the outcome column, signifying that 0 means No and 1 means Yes for diabetes.
+										
+										After that I ordered the table by age,glucose,bloodpressure etc for a better understanding
+										when I want to visualize.
+										</p>
+									
+									<div class="col-12"><span class="image fit"><img src="images/Diabetes/DiabetesCode.png" alt="" /></span></div>
+									<a href="https://github.com/Adine24/Data-Analysis---Portfolio/blob/main/Diabetes.sql">You can see the full code here</a>
+
+									<br>
+									<br>
+
+									<h4 class="major">Tableau visaulization</h4>
+									<p>After I was satisfied with my SQL codes and ouput, I imported the data into Tableau for
+										visualization. It took me a while to get the correct visualizations I needed. I had to combine and test
+										all the columns against each other before I could get good visualizations that were okay with me. 
+										Age and glucose column turned out to be the most common factor I used when visualizing.</p>
+
+										<h4>Dashboard 1 and 2</h4>
+										<p>The visuals starts with the average measures(Glucose, Insulin, BMI, Skinthickness) shown as 
+											values and in a bar chart</p>
+										<div class="col-12"><span class="image fit"><img src="images/Diabetes/Dashboard 1.png" alt="" /></span></div>
+	
+										<div class="col-12"><span class="image fit"><img src="images/Diabetes/Dashboard 2.png" alt="" /></span></div>
+									
+										<h4>Visualization 1 - Amount of glucose by age with diabetes_outcome as a measure </h4>
+										<p>Read details below</p>
+										<div class="col-12"><span class="image fit"><img src="images/Diabetes/Sheet 1 .png" alt="" /></span></div>
+										
+										<h4>Visualization 1 continued</h4>
+										<p>This visualization shows the average glucose in different age groups and whether or not 
+											they had diabetes and obviously as it turned out, age wasn't a facotor if they had diabetes or 
+											not. Rather the average amount of glucose was a factor. but the average amount glucose wasnt 
+											determined by the age. For example a 32 year old with average glucose of 128.9 and a 42 year old
+											with average glucose of 127.3 both had and diabetes_outcome of 1(yes) indicating that the less or
+											or more glucose someone had with respect to their age wasnt the only factor for one getting
+											diabetes.</p>
+										<div class="col-12"><span class="image fit"><img src="images/Diabetes/Sheet 1.1.png" alt="" /></span></div>
+										
+										<h4>Visualization 2 - Average BMI(Body Mass Index),SkinThickness by Age with diabetes_outcome and 
+											DiabetesPedigreeFunction(DPF) as a measure</h4>
+										<p>This visualization had me looking at if BMI or SkinThickness had a play in getting diabetes
+											or not. As you move along the chart the average BMI, SkinThickness and DPF varies with respect to
+											different ages. This showed me that it wasnt about the individuals BMI or SkinThickness 
+											or their age.</p>
+										<div class="col-12"><span class="image fit"><img src="images/Diabetes/Sheet 2.png" alt="" /></span></div>
+										
+										<h4>Visualization 3 - Average Glucose, Insulin by Age with DPF as Intensity and diabetes_outcome, 
+											DiabetesPedigreeFunction(DPF) as a measure</h4>
+										<p>With this visualization I checked for average Glucose,Insulin with respect to Age and used
+											DPF to Intensify the diabetes_outcome for yes and no results whcih are the areas with thick lines. 
+											<br>
+											<br>
+											It turned out this way:
+											<br>
+											- Age wasnt a factor to getting diabetes.
+											<br>
+											- diabetes_outcome turned out yes,when the average glucose was high.
+											<br>
+											- diabetes_outcome turned out yes,when the average insulin was high but with the dataset
+											 not always with different ages.
+											 <br>
+											- diabetes_outcome turned out yes,when the intensity was high.
+											<br>
+											
+											-- This signifies that the outcome for diabetes will be yes when all three measures are high.</p>
+										<div class="col-12"><span class="image fit"><img src="images/Diabetes/Sheet 3.png" alt="" /></span></div>
+										
+										<h4>Visualization 4 - Average Glucose, Insulin by Pregnancies with DPF as intensity and diabetes_outcome, 
+											DiabetesPedigreeFunction as a measure</h4>
+										<p>This last sheet had me looking at if pregnancies had a factor to play in diabetes or not
+											looking at the graph it shows that an individuals number of pregnancies didn't matter. Rather
+											still the average glucose and insulin with the intensity of DPF was the determining factor to
+											havin a diabetes_outcome of yes.
+											<br>
+											<br>
+											Therefore in conclusion :
+											<br>
+											- Control your glucose intake.
+											<br>
+											- Control your insulin levels if possible.
+											<br>
+											- Check your DiabetesPedigreeFunction and seek advice on what to do.</p>
+										<div class="col-12"><span class="image fit"><img src="images/Diabetes/Sheet 4.png" alt="" /></span></div>
+										
+	
+										<a href="https://github.com/Adine24/Data-Analysis---Portfolio">Download the full visualization here</a>
+
+										<br>
+										<br>
+
+										<p>The visualizations also came out simplified but it was a nice and cool project to work on. <br>
+											Thank you for viewing till the end.</p>
+
+								<!--	<section class="features">
+										<article>
+											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+											<h3 class="major">Sed feugiat lorem</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+											<h3 class="major">Nisl placerat</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Learn more</a>
+										</article>
+									</section> -->
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<h2 class="major">Get in touch</h2>
+							<p>Message me with your projects if interested. Or if you're looking to collaborate I am also open.</p>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="4"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+							<ul class="contact">
+								<!--	<li class="icon solid fa-home">
+									Untitled Inc<br />
+									1234 Somewhere Road Suite #2894<br />
+									Nashville, TN 00000-0000
+								</li> -->
+							<!--	<li class="icon solid fa-phone">(000) 000-0000</li> -->
+							<li class="icon solid fa-envelope"><a href="#">orhineadidi24@gmail.com</a></li>
+							<li class="icon brands fa-twitter"><a href="https://twitter.com/Its_Orhine_">twitter.com/Its_Orhine_</a></li>
+						<!--	<li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled-tld</a></li>
+							<li class="icon brands fa-instagram"><a href="#">instagram.com/untitled-tld</a></li> -->
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Orhine Adidi - Data Analyst. All rights reserved.</li><li> <a href=""></a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
