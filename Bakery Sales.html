@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Bakery Sales Analysis-Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Orhine Adidi-Portfolio</a></h1>
+					<!--	<nav>
+							<a href="#menu">Menu</a>
+						</nav> -->
+					</header>
+
+				<!-- Menu 
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="generic.html">Generic</a></li>
+								<li><a href="elements.html">Elements</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div> -->
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Bakery Sales Analysis</h2>
+								<p>The objective of this project is to forecast the sales of products in order to ease the production planning. Have a look at how I analyzed the data, which was cleaned and analyzed with the use of MySQL and Tableau.</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">The Process</h3>
+									<p> <span class="image left"><img src="images/Bakery/bakery-products.jpg" alt="" /></span>This was a simple project due to the dataset being easy to use. I got this dataset from kaggle.com which has a bunch more.
+										I started off by importing the table which came as an excel csv file from kaggle into MySQL, then I checked that the datatypes were according to what I wanted. The dataset initially had 234005 entries, over 136000 transactions and 6 columns.The dataset provides the daily transaction details
+										of customers from 2021-01-01 to 2022-09-30.
+									   </p>
+
+									<br>
+									<br>
+						
+									<h4 class="major">MySQL</h4>
+									<p> I got this dataset from kaggle.com which had the objective to forecast the sales in 
+										order to ease the production planning.
+										So I started off by importing the table which came as an excel csv file from kaggle, into Mysql,
+										after checking that the datatypes were according to what i wanted. the dataset had a initial total
+										of 234005 rows by 6 columns.
+										<br><br>
+										Cleaning the data
+										<br>
+										My first task was to check for duplicates as this was a large dataset and all was good
+										as it turned out no duplicates came out.
+										The dataset came with a column called myunknowncolumn which numbered the rows in a 
+										confusing way so I had to create a column called count to auto increment and count the
+										rows.Then renamed the date(datetime) column to date_ordered with date datatype.
+										The time column came as text so I renamed the time(datetime) column to time_ordered
+										with time datatype.
+										<br>
+										Then I renamed the article column to product_ordered which was better to me.
+										The unit_price column came with the pound sign attached to each price. In order
+										to make visualiztion better for me I removed the pound sign and renamed the column to
+										unit_price_euro. I also changed the format from '1,95' to '1.95'.
+										<br>
+										After all these I checked for null or blank cells in the table and there were none.
+										The product_ordered column had rows with '.' as entry so I removed those rows as it
+										wasn't necessary to keep which may or may not have affected my visualization.
+										The quantity column came with negative values for ordered products so for better
+										visualiztion I removed them, then removed rows where the unit_price was 0.
+										
+										Finally I dropped the column called myunknowncolumn which I didn't need.
+										</p>
+									
+									<div class="col-12"><span class="image fit"><img src="images/Bakery/Bakery code.png" alt="" /></span></div>
+									<a href="https://github.com/Adine24/Data-Analysis---Portfolio/blob/main/Bakery%20Sales/Bakery%20Sales.sql">You can see the full code here</a>
+
+									<br>
+									<br>
+
+									<h4 class="major">Tableau visaulization</h4>
+									<p>After I was satisfied with my SQL codes and ouput, I imported the data into Tableau for
+										visualization. It took me a while to get the correct visualizations I needed. I had to combine and test
+										all the columns against each other before I could get good visualizations that were okay with me. 
+										</p>
+
+										<h4>Dashboard 1</h4>
+										<p>The dashboard visualization 1 starts with the count of each products sold for the years
+											2021 and 2022 at the top left. It shows the Traditional Baguette as the most popular product sold
+											for both years with the highest count of products, followed by Coupe product.</p>
+
+										<div class="col-12"><span class="image fit"><img src="images/Bakery/Dashboard 1.png" alt="" /></span></div>
+
+										<p>The second visualiztion at top right shows  the yearly count of products per year and
+											month. We can see that the order of products keeps rising with a dip around June,
+											but then a huge rise in products sold during August, signifying their busiest month.
+											immediately we are followed by a drop as the year comes to an end. The data doesn't show 
+											us why but its something we can observe for the year 2021 and 2022. 
+										</p>
+										<p>Next at the bottom left we have the product performance by days of the week.
+											This visuals shows us Wednesday is a not so busy day and Sunday is the busiest day 
+											probably because its a no work day for other workers. While other days have fairly the same
+											level of activity but we see a rise over the weekend (Saturdays and Sundays).
+										</p>
+										<p>At the bottom right we see the performance of each product on different weekdays
+											with the Traditional Baguette outshining the others on all days and on Sunday too,
+											the busiest day.
+										</p>
+	
+										<h4>Dashboard 2</h4>
+
+										<p>For Dashboard 2, at the top we have the yearly count of products by
+											weekdays in a general outlook.</p>
+										<div class="col-12"><span class="image fit"><img src="images/Bakery/Dashboard 2.png" alt="" /></span></div>
+									
+										<p>At the bottom left we have the count of products with respect to the time there were 
+											ordered and as we can see, the activity keeps rising over the hours with peak activity 
+											close to midday at 11 and then a serious drop in activity after lunch at 14-15:00 hrs
+											we then see a short rise again at 16-18 hrs.</p>
+
+										<p>The last visual at the bottom left shows us the line chart of products and the time
+											there were ordered again with the Traditional Baguette beating other products at all
+											times of day.</p>
+
+										
+										<div class="col-12"><span class="image fit"><img src="images/Bakery/Sheet 1.png" alt="" /></span></div>
+										<div class="col-12"><span class="image fit"><img src="images/Bakery/Sheet 2.png" alt="" /></span></div>
+										<div class="col-12"><span class="image fit"><img src="images/Bakery/Sheet 3.png" alt="" /></span></div>
+										<div class="col-12"><span class="image fit"><img src="images/Bakery/Sheet 4.png" alt="" /></span></div>
+										<div class="col-12"><span class="image fit"><img src="images/Bakery/Sheet 5.png" alt="" /></span></div>
+										<div class="col-12"><span class="image fit"><img src="images/Bakery/Sheet 6.png" alt="" /></span></div>
+										<div class="col-12"><span class="image fit"><img src="images/Bakery/Sheet 7.png" alt="" /></span></div>
+									
+	
+										<a href="https://github.com/Adine24/Data-Analysis---Portfolio/tree/main/Bakery%20Sales">Download the full visualization here</a>
+
+										<br><br>
+
+										<h4>Advice On Production Planning</h4> 
+										<p>
+											- The Traditional Baguette is the most popular product, so it can be adviced to always 
+											have the ingredients necessary to make it in bulk followed by the Croupe.
+											
+											<br>
+											
+											- We see that within 10-12:00 hours are the busiest so products should be ready before then.
+											<br>
+											
+											- Wednesdays aren't so busy so workload can reduce and products made on that day be less.
+											<br>
+											
+											- Saturdays & Sundays have increased activity so a full house should be present with all workers.
+											<br>
+											
+											- July and August are the busiest months of the year so those months should be
+											fully stocked on ingredients for each products especially the Traditional Baguette.
+											<br>
+											
+											
+											Note : 2022 data ends in september thats why the yearly count of products by year and month ends
+											in September.</p>
+
+										<p>This was a fun project to work on both in cleaning up the data in SQL and visualizing
+											in tableau.</p>
+
+								<!--	<section class="features">
+										<article>
+											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+											<h3 class="major">Sed feugiat lorem</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Learn more</a>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+											<h3 class="major">Nisl placerat</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
+											<a href="#" class="special">Learn more</a>
+										</article>
+									</section> -->
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<h2 class="major">Get in touch</h2>
+							<p>Message me with your projects if interested. Or if you're looking to collaborate I am also open.</p>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="email" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="4"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+							<ul class="contact">
+								<!--	<li class="icon solid fa-home">
+									Untitled Inc<br />
+									1234 Somewhere Road Suite #2894<br />
+									Nashville, TN 00000-0000
+								</li> -->
+							<!--	<li class="icon solid fa-phone">(000) 000-0000</li> -->
+							<li class="icon solid fa-envelope"><a href="#">orhineadidi24@gmail.com</a></li>
+							<li class="icon brands fa-twitter"><a href="https://twitter.com/Its_Orhine_">twitter.com/Its_Orhine_</a></li>
+						<!--	<li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled-tld</a></li>
+							<li class="icon brands fa-instagram"><a href="#">instagram.com/untitled-tld</a></li> -->
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Orhine Adidi - Data Analyst. All rights reserved.</li><li> <a href=""></a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
